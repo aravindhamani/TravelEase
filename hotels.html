@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Booking - TravelEase</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Floating Background Elements -->
+    <div class="floating-element"></div>
+    <div class="floating-element"></div>
+    <div class="floating-element"></div>
+    <div class="floating-element"></div>
+    
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-plane-departure"></i> TravelEase
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="flights.html">Flights</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="hotels.html">Hotels</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="packages.html">Packages</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-light btn-sm ms-2" href="login.html">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <section class="page-header bg-success text-white py-5" style="margin-top: 80px;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h1 class="display-4 fw-bold">Hotel Booking</h1>
+                    <p class="lead">Find the perfect accommodation for your stay</p>
+                </div>
+                <div class="col-lg-4 text-end">
+                    <i class="fas fa-hotel fa-3x opacity-50"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="search-section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="search-filters">
+                        <h5 class="mb-3">Search Filters</h5>
+                        
+                        <!-- Price Range -->
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">Price Range</label>
+                            <div class="d-flex align-items-center">
+                                <input type="range" class="form-range" id="priceRange" min="50" max="500" value="200">
+                                <span class="ms-2" id="priceValue">$200</span>
+                            </div>
+                        </div>
+
+                        <!-- Star Rating -->
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">Star Rating</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="star5" checked>
+                                <label class="form-check-label" for="star5">
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="star4" checked>
+                                <label class="form-check-label" for="star4">
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="far fa-star text-warning"></i>
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="star3" checked>
+                                <label class="form-check-label" for="star3">
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="far fa-star text-warning"></i>
+                                    <i class="far fa-star text-warning"></i>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Amenities -->
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">Amenities</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="wifi" checked>
+                                <label class="form-check-label" for="wifi">
+                                    <i class="fas fa-wifi"></i> Free WiFi
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="pool">
+                                <label class="form-check-label" for="pool">
+                                    <i class="fas fa-swimming-pool"></i> Swimming Pool
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="gym">
+                                <label class="form-check-label" for="gym">
+                                    <i class="fas fa-dumbbell"></i> Fitness Center
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="parking">
+                                <label class="form-check-label" for="parking">
+                                    <i class="fas fa-parking"></i> Free Parking
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="restaurant">
+                                <label class="form-check-label" for="restaurant">
+                                    <i class="fas fa-utensils"></i> Restaurant
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Hotel Type -->
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">Hotel Type</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="hotel" checked>
+                                <label class="form-check-label" for="hotel">Hotel</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="resort">
+                                <label class="form-check-label" for="resort">Resort</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="motel">
+                                <label class="form-check-label" for="motel">Motel</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="apartment">
+                                <label class="form-check-label" for="apartment">Apartment</label>
+                            </div>
+                        </div>
+
+                        <!-- Guest Rating -->
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">Guest Rating</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="rating9">
+                                <label class="form-check-label" for="rating9">9+ (Excellent)</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="rating8" checked>
+                                <label class="form-check-label" for="rating8">8+ (Very Good)</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="rating7" checked>
+                                <label class="form-check-label" for="rating7">7+ (Good)</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-9">
+                    <div class="search-form">
+                        <form id="hotelSearchForm">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Destination</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+                                        <input type="text" class="form-control" id="hotelDestination" placeholder="Where are you going?">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="form-label">Check-in</label>
+                                    <input type="date" class="form-control" id="checkInDate">
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="form-label">Check-out</label>
+                                    <input type="date" class="form-control" id="checkOutDate">
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Guests</label>
+                                    <select class="form-select" id="guestCount">
+                                        <option value="1">1 Guest</option>
+                                        <option value="2" selected>2 Guests</option>
+                                        <option value="3">3 Guests</option>
+                                        <option value="4">4 Guests</option>
+                                        <option value="5">5+ Guests</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Rooms</label>
+                                    <select class="form-select" id="roomCount">
+                                        <option value="1" selected>1 Room</option>
+                                        <option value="2">2 Rooms</option>
+                                        <option value="3">3 Rooms</option>
+                                        <option value="4">4+ Rooms</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Room Type</label>
+                                    <select class="form-select" id="roomType">
+                                        <option value="standard">Standard</option>
+                                        <option value="deluxe">Deluxe</option>
+                                        <option value="suite">Suite</option>
+                                        <option value="family">Family</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="text-center mt-4">
+                                <button type="submit" class="btn btn-success btn-lg px-5">
+                                    <i class="fas fa-search"></i> Search Hotels
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Search Results -->
+                    <div id="hotelResults" class="mt-5" style="display: none;">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h4>Hotel Results</h4>
+                            <div class="d-flex gap-2">
+                                <button class="btn btn-outline-secondary btn-sm" onclick="sortByPrice()">
+                                    <i class="fas fa-dollar-sign"></i> Price
+                                </button>
+                                <button class="btn btn-outline-secondary btn-sm" onclick="sortByRating()">
+                                    <i class="fas fa-star"></i> Rating
+                                </button>
+                                <button class="btn btn-outline-secondary btn-sm" onclick="sortByDistance()">
+                                    <i class="fas fa-map-marker-alt"></i> Distance
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div id="hotelResultsList">
+                            <!-- Hotel results will be populated here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Destinations -->
+    <section class="popular-destinations py-5 bg-light">
+        <div class="container">
+            <h3 class="text-center mb-5">Popular Hotel Destinations</h3>
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="destination-card">
+                        <div class="destination-image">
+                            <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=400" alt="New York">
+                            <div class="destination-overlay">
+                                <h4>New York</h4>
+                                <p>Starting from $150/night</p>
+                                <button class="btn btn-light btn-sm" onclick="searchDestination('New York')">
+                                    Search Hotels
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="destination-card">
+                        <div class="destination-image">
+                            <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=400" alt="Los Angeles">
+                            <div class="destination-overlay">
+                                <h4>Los Angeles</h4>
+                                <p>Starting from $120/night</p>
+                                <button class="btn btn-light btn-sm" onclick="searchDestination('Los Angeles')">
+                                    Search Hotels
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="destination-card">
+                        <div class="destination-image">
+                            <img src="https://images.unsplash.com/photo-1518791841217-8f162f1e1131?w=400" alt="Miami">
+                            <div class="destination-overlay">
+                                <h4>Miami</h4>
+                                <p>Starting from $180/night</p>
+                                <button class="btn btn-light btn-sm" onclick="searchDestination('Miami')">
+                                    Search Hotels
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="destination-card">
+                        <div class="destination-image">
+                            <img src="https://images.unsplash.com/photo-1502602898535-89294725866e?w=400" alt="Paris">
+                            <div class="destination-overlay">
+                                <h4>Paris</h4>
+                                <p>Starting from $200/night</p>
+                                <button class="btn btn-light btn-sm" onclick="searchDestination('Paris')">
+                                    Search Hotels
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark text-light py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <h5><i class="fas fa-plane-departure"></i> TravelEase</h5>
+                    <p>Your ultimate travel companion for booking flights, hotels, and travel packages worldwide.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <h6>Quick Links</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="flights.html">Flights</a></li>
+                        <li><a href="hotels.html">Hotels</a></li>
+                        <li><a href="packages.html">Packages</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2">
+                    <h6>Support</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h6>Newsletter</h6>
+                    <p>Subscribe to get the latest travel deals and updates.</p>
+                    <form class="newsletter-form">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Your email">
+                            <button class="btn btn-success" type="submit">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p>&copy; 2024 TravelEase. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Login to TravelEase</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="loginForm">
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Password</label>
+                            <input type="password" class="form-control" required>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="rememberMe">
+                            <label class="form-check-label" for="rememberMe">Remember me</label>
+                        </div>
+                        <button type="submit" class="btn btn-success w-100">Login</button>
+                    </form>
+                    <div class="text-center mt-3">
+                        <p>Don't have an account? <a href="#" data-bs-toggle="modal" data-bs-target="#registerModal">Sign up</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js"></script>
+    <script src="hotels.js"></script>
+</body>
+</html> 

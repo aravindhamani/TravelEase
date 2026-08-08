@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment - TravelEase</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .payment-container {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 2rem 0;
+        }
+        
+        .payment-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .payment-header {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .payment-methods {
+            padding: 2rem;
+        }
+        
+        .payment-method {
+            border: 2px solid #e9ecef;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .payment-method:hover {
+            border-color: #007bff;
+            transform: translateY(-2px);
+        }
+        
+        .payment-method.selected {
+            border-color: #007bff;
+            background: #f8f9ff;
+        }
+        
+        .payment-method-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 1rem;
+        }
+        
+        .credit-card-icon {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+        }
+        
+        .paypal-icon {
+            background: linear-gradient(135deg, #003087, #009cde);
+        }
+        
+        .apple-pay-icon {
+            background: linear-gradient(135deg, #000, #333);
+        }
+        
+        .google-pay-icon {
+            background: linear-gradient(135deg, #4285f4, #34a853);
+        }
+        
+        .payment-form {
+            padding: 2rem;
+        }
+        
+        .form-floating {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-floating .form-control {
+            border-radius: 10px;
+            border: 2px solid #e9ecef;
+            padding: 1rem 0.75rem;
+        }
+        
+        .form-floating .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        }
+        
+        .btn-pay {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            border: none;
+            border-radius: 10px;
+            padding: 1rem 2rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-pay:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(40, 167, 69, 0.4);
+        }
+        
+        .order-summary {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .summary-item:last-child {
+            border-bottom: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #007bff;
+        }
+        
+        .security-badges {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        
+        .security-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #28a745;
+            font-size: 0.9rem;
+        }
+        
+        .success-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .success-content {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+        }
+        
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: #28a745;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            margin: 0 auto 2rem;
+        }
+        
+        .download-btn {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 0.75rem 2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Background Elements -->
+    <div class="floating-element"></div>
+    <div class="floating-element"></div>
+    <div class="floating-element"></div>
+    <div class="floating-element"></div>
+    
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-plane-departure"></i> TravelEase
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="flights.html">Flights</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="hotels.html">Hotels</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="packages.html">Packages</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-light btn-sm ms-2" href="login.html">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Payment Container -->
+    <div class="payment-container" style="margin-top: 80px;">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="payment-card">
+                        <!-- Payment Header -->
+                        <div class="payment-header">
+                            <h2 class="mb-3"><i class="fas fa-credit-card"></i> Secure Payment</h2>
+                            <p class="mb-0">Complete your booking with our secure payment system</p>
+                        </div>
+
+                        <!-- Order Summary -->
+                        <div class="order-summary">
+                            <h5 class="mb-3">Order Summary</h5>
+                            <div id="orderSummary">
+                                <!-- Order summary will be populated here -->
+                            </div>
+                        </div>
+
+                        <!-- Payment Methods -->
+                        <div class="payment-methods">
+                            <h5 class="mb-3">Choose Payment Method</h5>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="payment-method" onclick="selectPaymentMethod('credit')">
+                                        <div class="payment-method-icon credit-card-icon">
+                                            <i class="fas fa-credit-card"></i>
+                                        </div>
+                                        <h6>Credit/Debit Card</h6>
+                                        <p class="text-muted mb-0">Visa, Mastercard, American Express</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="payment-method" onclick="selectPaymentMethod('paypal')">
+                                        <div class="payment-method-icon paypal-icon">
+                                            <i class="fab fa-paypal"></i>
+                                        </div>
+                                        <h6>PayPal</h6>
+                                        <p class="text-muted mb-0">Fast and secure payment</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="payment-method" onclick="selectPaymentMethod('apple')">
+                                        <div class="payment-method-icon apple-pay-icon">
+                                            <i class="fab fa-apple-pay"></i>
+                                        </div>
+                                        <h6>Apple Pay</h6>
+                                        <p class="text-muted mb-0">Quick and easy payment</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="payment-method" onclick="selectPaymentMethod('google')">
+                                        <div class="payment-method-icon google-pay-icon">
+                                            <i class="fab fa-google-pay"></i>
+                                        </div>
+                                        <h6>Google Pay</h6>
+                                        <p class="text-muted mb-0">Secure digital payment</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Credit Card Form -->
+                        <div id="creditCardForm" class="payment-form" style="display: none;">
+                            <h5 class="mb-3">Card Details</h5>
+                            <form id="paymentForm">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" id="cardNumber" placeholder="Card Number" required>
+                                            <label for="cardNumber">Card Number</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" id="expiryDate" placeholder="MM/YY" required>
+                                            <label for="expiryDate">Expiry Date</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" id="cvv" placeholder="CVV" required>
+                                            <label for="cvv">CVV</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" id="cardholderName" placeholder="Cardholder Name" required>
+                                            <label for="cardholderName">Cardholder Name</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="text-center mt-4">
+                                    <button type="submit" class="btn btn-pay btn-lg">
+                                        <i class="fas fa-lock"></i> Pay Securely
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Other Payment Methods -->
+                        <div id="otherPaymentForm" class="payment-form" style="display: none;">
+                            <div class="text-center">
+                                <h5 class="mb-3">Complete Payment</h5>
+                                <p class="mb-4">You will be redirected to complete your payment securely.</p>
+                                <button class="btn btn-pay btn-lg" onclick="processPayment()">
+                                    <i class="fas fa-lock"></i> Continue to Payment
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Security Badges -->
+                        <div class="security-badges">
+                            <div class="security-badge">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>SSL Secured</span>
+                            </div>
+                            <div class="security-badge">
+                                <i class="fas fa-lock"></i>
+                                <span>256-bit Encryption</span>
+                            </div>
+                            <div class="security-badge">
+                                <i class="fas fa-check-circle"></i>
+                                <span>PCI Compliant</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="success-modal">
+        <div class="success-content">
+            <div class="success-icon">
+                <i class="fas fa-check"></i>
+            </div>
+            <h3 class="mb-3">Payment Successful!</h3>
+            <p class="mb-4">Your booking has been confirmed. You can now download your ticket.</p>
+            <div class="d-grid gap-2">
+                <button class="btn download-btn" onclick="downloadTicket()">
+                    <i class="fas fa-download"></i> Download Ticket
+                </button>
+                <button class="btn btn-outline-secondary" onclick="goToHome()">
+                    <i class="fas fa-home"></i> Back to Home
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        let selectedPaymentMethod = '';
+        let bookingType = '';
+
+        $(document).ready(function() {
+            // Check if user is logged in
+            if (localStorage.getItem('isLoggedIn') !== 'true') {
+                window.location.href = 'login.html?return=payment.html';
+                return;
+            }
+
+            // Get booking type from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            bookingType = urlParams.get('type') || 'flight';
+
+            // Load order summary
+            loadOrderSummary();
+        });
+
+        function loadOrderSummary() {
+            let summaryHtml = '';
+            
+            if (bookingType === 'flight') {
+                const selectedFlight = JSON.parse(localStorage.getItem('selectedFlight') || '{}');
+                const totalPrice = selectedFlight.price * 2; // 2 passengers
+                
+                summaryHtml = `
+                    <div class="summary-item">
+                        <span>Flight:</span>
+                        <span>${selectedFlight.airline} ${selectedFlight.flightNumber}</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Route:</span>
+                        <span>${selectedFlight.from} → ${selectedFlight.to}</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Date:</span>
+                        <span>March 15, 2024</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Passengers:</span>
+                        <span>2 Adults</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Base Fare:</span>
+                        <span>$${selectedFlight.price}</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Taxes & Fees:</span>
+                        <span>$45</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Total:</span>
+                        <span>$${totalPrice + 45}</span>
+                    </div>
+                `;
+            } else if (bookingType === 'hotel') {
+                summaryHtml = `
+                    <div class="summary-item">
+                        <span>Hotel:</span>
+                        <span>Grand Plaza Hotel</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Location:</span>
+                        <span>New York, NY</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Check-in:</span>
+                        <span>March 15, 2024</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Check-out:</span>
+                        <span>March 18, 2024</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Guests:</span>
+                        <span>2 Adults</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Room Rate:</span>
+                        <span>$199/night</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Taxes & Fees:</span>
+                        <span>$30</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Total:</span>
+                        <span>$627</span>
+                    </div>
+                `;
+            }
+
+            $('#orderSummary').html(summaryHtml);
+        }
+
+        function selectPaymentMethod(method) {
+            selectedPaymentMethod = method;
+            
+            // Remove previous selection
+            $('.payment-method').removeClass('selected');
+            
+            // Add selection to clicked method
+            $(`.payment-method`).each(function() {
+                if ($(this).find('h6').text().toLowerCase().includes(method)) {
+                    $(this).addClass('selected');
+                }
+            });
+
+            // Show appropriate form
+            if (method === 'credit') {
+                $('#creditCardForm').show();
+                $('#otherPaymentForm').hide();
+            } else {
+                $('#creditCardForm').hide();
+                $('#otherPaymentForm').show();
+            }
+        }
+
+        // Payment form submission
+        $('#paymentForm').on('submit', function(e) {
+            e.preventDefault();
+            
+            const cardNumber = $('#cardNumber').val();
+            const expiryDate = $('#expiryDate').val();
+            const cvv = $('#cvv').val();
+            const cardholderName = $('#cardholderName').val();
+            
+            if (!cardNumber || !expiryDate || !cvv || !cardholderName) {
+                showAlert('Please fill in all card details', 'danger');
+                return;
+            }
+            
+            processPayment();
+        });
+
+        function processPayment() {
+            // Show loading
+            const submitBtn = $('.btn-pay');
+            const originalText = submitBtn.html();
+            submitBtn.html('<span class="loading"></span> Processing...');
+            submitBtn.prop('disabled', true);
+            
+            // Simulate payment processing
+            setTimeout(function() {
+                submitBtn.html(originalText);
+                submitBtn.prop('disabled', false);
+                
+                // Show success modal
+                $('#successModal').show();
+            }, 3000);
+        }
+
+        function downloadTicket() {
+            // Generate ticket content
+            const selectedFlight = JSON.parse(localStorage.getItem('selectedFlight') || '{}');
+            const ticketContent = `
+                TRAVEL EASE - FLIGHT TICKET
+                ================================
+                
+                Passenger: John Doe
+                Flight: ${selectedFlight.airline} ${selectedFlight.flightNumber}
+                From: ${selectedFlight.from}
+                To: ${selectedFlight.to}
+                Date: March 15, 2024
+                Departure: ${selectedFlight.departure}
+                Arrival: ${selectedFlight.arrival}
+                Duration: ${selectedFlight.duration}
+                Seat: 12A
+                Booking Reference: TRV-${Date.now().toString().slice(-6)}
+                
+                ================================
+                Total Paid: $${(selectedFlight.price * 2) + 45}
+                Payment Method: Credit Card
+                Status: Confirmed
+                
+                Thank you for choosing TravelEase!
+            `;
+            
+            // Create and download file
+            const blob = new Blob([ticketContent], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `flight-ticket-${Date.now()}.txt`;
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+            document.body.removeChild(a);
+            
+            showAlert('Ticket downloaded successfully!', 'success');
+        }
+
+        function goToHome() {
+            window.location.href = 'index.html';
+        }
+
+        // Show alert function
+        function showAlert(message, type) {
+            const alertHtml = `
+                <div class="alert alert-${type} alert-dismissible fade show position-fixed" style="top: 20px; right: 20px; z-index: 9999;">
+                    ${message}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            `;
+            
+            $('.alert').remove();
+            $('body').append(alertHtml);
+            
+            setTimeout(function() {
+                $('.alert').fadeOut();
+            }, 5000);
+        }
+
+        // Card number formatting
+        $('#cardNumber').on('input', function() {
+            let value = $(this).val().replace(/\D/g, '');
+            value = value.replace(/(\d{4})(?=\d)/g, '$1 ');
+            $(this).val(value.substring(0, 19));
+        });
+
+        // Expiry date formatting
+        $('#expiryDate').on('input', function() {
+            let value = $(this).val().replace(/\D/g, '');
+            if (value.length >= 2) {
+                value = value.substring(0, 2) + '/' + value.substring(2, 4);
+            }
+            $(this).val(value.substring(0, 5));
+        });
+
+        // CVV formatting
+        $('#cvv').on('input', function() {
+            let value = $(this).val().replace(/\D/g, '');
+            $(this).val(value.substring(0, 4));
+        });
+    </script>
+</body>
+</html> 

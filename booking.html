@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking - TravelEase</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Floating Background Elements -->
+    <div class="floating-element"></div>
+    <div class="floating-element"></div>
+    <div class="floating-element"></div>
+    <div class="floating-element"></div>
+    
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-plane-departure"></i> TravelEase
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="flights.html">Flights</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="hotels.html">Hotels</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="packages.html">Packages</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-light btn-sm ms-2" href="#login" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Booking Section -->
+    <section class="booking-section py-5" style="margin-top: 80px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="booking-form">
+                        <h3 class="mb-4">Complete Your Booking</h3>
+                        
+                        <!-- Booking Summary -->
+                        <div class="booking-summary mb-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Booking Summary</h5>
+                                    <div id="bookingDetails">
+                                        <!-- Booking details will be populated here -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Passenger Information -->
+                        <div class="passenger-info mb-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Passenger Information</h5>
+                                    <form id="passengerForm">
+                                        <div class="row g-3">
+                                            <div class="col-md-6">
+                                                <label class="form-label">First Name *</label>
+                                                <input type="text" class="form-control" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label">Last Name *</label>
+                                                <input type="text" class="form-control" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label">Email *</label>
+                                                <input type="email" class="form-control" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label">Phone *</label>
+                                                <input type="tel" class="form-control" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label">Date of Birth *</label>
+                                                <input type="date" class="form-control" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label">Passport Number</label>
+                                                <input type="text" class="form-control">
+                                            </div>
+                                            <div class="col-12">
+                                                <label class="form-label">Special Requests</label>
+                                                <textarea class="form-control" rows="3" placeholder="Any special requests or dietary requirements..."></textarea>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Payment Information -->
+                        <div class="payment-info mb-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Payment Information</h5>
+                                    <form id="paymentForm">
+                                        <div class="row g-3">
+                                            <div class="col-12">
+                                                <label class="form-label">Card Number *</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-text"><i class="fas fa-credit-card"></i></span>
+                                                    <input type="text" class="form-control" placeholder="1234 5678 9012 3456" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label">Expiry Date *</label>
+                                                <input type="text" class="form-control" placeholder="MM/YY" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label">CVV *</label>
+                                                <input type="text" class="form-control" placeholder="123" required>
+                                            </div>
+                                            <div class="col-12">
+                                                <label class="form-label">Cardholder Name *</label>
+                                                <input type="text" class="form-control" required>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="saveCard">
+                                                    <label class="form-check-label" for="saveCard">
+                                                        Save card for future bookings
+      </label>
+                                                </div>
+                                            </div>
+                                        </div>
+    </form>
+  </div>
+                            </div>
+                        </div>
+
+                        <!-- Terms and Conditions -->
+                        <div class="terms-conditions mb-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Terms & Conditions</h5>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="termsAccepted" required>
+                                        <label class="form-check-label" for="termsAccepted">
+                                            I agree to the <a href="#" data-bs-toggle="modal" data-bs-target="#termsModal">Terms and Conditions</a> and <a href="#" data-bs-toggle="modal" data-bs-target="#privacyModal">Privacy Policy</a>
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="marketingConsent">
+                                        <label class="form-check-label" for="marketingConsent">
+                                            I would like to receive promotional emails and offers
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Booking Buttons -->
+                        <div class="booking-actions">
+                            <button type="button" class="btn btn-secondary me-3" onclick="history.back()">
+                                <i class="fas fa-arrow-left"></i> Back
+                            </button>
+                            <button type="button" class="btn btn-primary btn-lg" onclick="processBooking()">
+                                <i class="fas fa-lock"></i> Complete Booking
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="booking-sidebar">
+                        <!-- Price Breakdown -->
+                        <div class="price-breakdown mb-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Price Breakdown</h5>
+                                    <div id="priceDetails">
+                                        <!-- Price details will be populated here -->
+                                    </div>
+                                    <hr>
+                                    <div class="total-price">
+                                        <h4 class="mb-0">Total: <span id="totalPrice">$0</span></h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Travel Insurance -->
+                        <div class="travel-insurance mb-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Travel Insurance</h5>
+                                    <p class="card-text">Protect your trip with comprehensive travel insurance.</p>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="addInsurance">
+                                        <label class="form-check-label" for="addInsurance">
+                                            Add Travel Insurance (+$49)
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Customer Support -->
+                        <div class="customer-support">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <i class="fas fa-headset fa-2x text-primary mb-3"></i>
+                                    <h5>Need Help?</h5>
+                                    <p class="card-text">Our customer support team is available 24/7</p>
+                                    <a href="tel:1-800-TRAVEL" class="btn btn-outline-primary">
+                                        <i class="fas fa-phone"></i> 1-800-TRAVEL
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Terms Modal -->
+    <div class="modal fade" id="termsModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Terms and Conditions</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <h6>1. Booking and Payment</h6>
+                    <p>All bookings are subject to availability and confirmation. Payment must be made in full at the time of booking.</p>
+                    
+                    <h6>2. Cancellation Policy</h6>
+                    <p>Cancellations made more than 24 hours before departure are subject to a 10% cancellation fee. No refunds for cancellations within 24 hours.</p>
+                    
+                    <h6>3. Travel Documents</h6>
+                    <p>Travelers are responsible for ensuring they have valid travel documents including passports, visas, and any required vaccinations.</p>
+                    
+                    <h6>4. Travel Insurance</h6>
+                    <p>We strongly recommend purchasing travel insurance to protect against unforeseen circumstances.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Privacy Modal -->
+    <div class="modal fade" id="privacyModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Privacy Policy</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <h6>Information We Collect</h6>
+                    <p>We collect personal information including name, email, phone number, and payment information to process your bookings.</p>
+                    
+                    <h6>How We Use Your Information</h6>
+                    <p>Your information is used to process bookings, send confirmations, and provide customer support.</p>
+                    
+                    <h6>Data Security</h6>
+                    <p>We implement industry-standard security measures to protect your personal information.</p>
+                    
+                    <h6>Third-Party Services</h6>
+                    <p>We may share information with airlines, hotels, and other travel service providers to fulfill your bookings.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js"></script>
+    <script src="booking.js"></script>
+</body>
+</html>

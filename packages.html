@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Packages - TravelEase</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Floating Background Elements -->
+    <div class="floating-element"></div>
+    <div class="floating-element"></div>
+    <div class="floating-element"></div>
+    <div class="floating-element"></div>
+    
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-plane-departure"></i> TravelEase
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="flights.html">Flights</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="hotels.html">Hotels</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="packages.html">Packages</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-light btn-sm ms-2" href="login.html">Login</a>
+                    </li>
+            </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <section class="page-header bg-warning text-dark py-5" style="margin-top: 80px;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h1 class="display-4 fw-bold">Travel Packages</h1>
+                    <p class="lead">Discover amazing vacation deals with flights, hotels, and activities included</p>
+                </div>
+                <div class="col-lg-4 text-end">
+                    <i class="fas fa-suitcase fa-3x opacity-50"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="search-section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="search-filters">
+                        <h5 class="mb-3">Package Filters</h5>
+                        
+                        <!-- Package Type -->
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">Package Type</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="allInclusive" checked>
+                                <label class="form-check-label" for="allInclusive">All-Inclusive</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="adventure" checked>
+                                <label class="form-check-label" for="adventure">Adventure</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="romantic" checked>
+                                <label class="form-check-label" for="romantic">Romantic</label>
+                    </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="family" checked>
+                                <label class="form-check-label" for="family">Family</label>
+                        </div>
+                        </div>
+
+                        <!-- Duration -->
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">Duration</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="shortTrip" checked>
+                                <label class="form-check-label" for="shortTrip">3-5 Days</label>
+                    </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="mediumTrip" checked>
+                                <label class="form-check-label" for="mediumTrip">6-10 Days</label>
+                </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="longTrip" checked>
+                                <label class="form-check-label" for="longTrip">11+ Days</label>
+                    </div>
+                        </div>
+
+                        <!-- Price Range -->
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">Price Range</label>
+                            <div class="d-flex align-items-center">
+                                <input type="range" class="form-range" id="priceRange" min="500" max="5000" value="2000">
+                                <span class="ms-2" id="priceValue">$2000</span>
+                            </div>
+                        </div>
+
+                        <!-- Travelers -->
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">Travelers</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="solo" checked>
+                                <label class="form-check-label" for="solo">Solo</label>
+                    </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="couple" checked>
+                                <label class="form-check-label" for="couple">Couple</label>
+                </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="family" checked>
+                                <label class="form-check-label" for="family">Family</label>
+                    </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="group" checked>
+                                <label class="form-check-label" for="group">Group</label>
+                        </div>
+                        </div>
+
+                        <!-- Activities -->
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">Activities</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="beach" checked>
+                                <label class="form-check-label" for="beach">
+                                    <i class="fas fa-umbrella-beach"></i> Beach
+                                </label>
+                    </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="mountain" checked>
+                                <label class="form-check-label" for="mountain">
+                                    <i class="fas fa-mountain"></i> Mountain
+                                </label>
+                </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="city" checked>
+                                <label class="form-check-label" for="city">
+                                    <i class="fas fa-city"></i> City
+                                </label>
+                    </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="culture" checked>
+                                <label class="form-check-label" for="culture">
+                                    <i class="fas fa-landmark"></i> Culture
+                                </label>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-9">
+                    <div class="search-form">
+                        <form id="packageSearchForm">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Destination</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+                                        <input type="text" class="form-control" id="packageDestination" placeholder="Where do you want to go?">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="form-label">Departure Date</label>
+                                    <input type="date" class="form-control" id="packageDeparture">
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="form-label">Duration</label>
+                                    <select class="form-select" id="packageDuration">
+                                        <option value="3">3 Days</option>
+                                        <option value="5">5 Days</option>
+                                        <option value="7" selected>7 Days</option>
+                                        <option value="10">10 Days</option>
+                                        <option value="14">14 Days</option>
+                                    </select>
+                    </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Travelers</label>
+                                    <select class="form-select" id="packageTravelers">
+                                        <option value="1">1 Traveler</option>
+                                        <option value="2" selected>2 Travelers</option>
+                                        <option value="3">3 Travelers</option>
+                                        <option value="4">4 Travelers</option>
+                                        <option value="5">5+ Travelers</option>
+                                    </select>
+                        </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Budget</label>
+                                    <select class="form-select" id="packageBudget">
+                                        <option value="budget">Budget ($500-1500)</option>
+                                        <option value="mid" selected>Mid-range ($1500-3000)</option>
+                                        <option value="luxury">Luxury ($3000+)</option>
+                                    </select>
+                        </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Package Type</label>
+                                    <select class="form-select" id="packageType">
+                                        <option value="all">All Packages</option>
+                                        <option value="allInclusive">All-Inclusive</option>
+                                        <option value="adventure">Adventure</option>
+                                        <option value="romantic">Romantic</option>
+                                        <option value="family">Family</option>
+                                    </select>
+                    </div>
+                </div>
+                            <div class="text-center mt-4">
+                                <button type="submit" class="btn btn-warning btn-lg px-5">
+                                    <i class="fas fa-search"></i> Search Packages
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Search Results -->
+                    <div id="packageResults" class="mt-5" style="display: none;">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h4>Package Results</h4>
+                            <div class="d-flex gap-2">
+                                <button class="btn btn-outline-secondary btn-sm" onclick="sortByPrice()">
+                                    <i class="fas fa-dollar-sign"></i> Price
+                                </button>
+                                <button class="btn btn-outline-secondary btn-sm" onclick="sortByDuration()">
+                                    <i class="fas fa-clock"></i> Duration
+                                </button>
+                                <button class="btn btn-outline-secondary btn-sm" onclick="sortByRating()">
+                                    <i class="fas fa-star"></i> Rating
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div id="packageResultsList">
+                            <!-- Package results will be populated here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Packages -->
+    <section class="featured-packages py-5 bg-light">
+        <div class="container">
+            <h3 class="text-center mb-5">Featured Packages</h3>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="package-card">
+                        <div class="package-image">
+                            <img src="https://images.unsplash.com/photo-1502602898535-89294725866e?w=400&fit=crop&crop=center" alt="Paris Package" onerror="this.src='https://via.placeholder.com/400x300/007bff/ffffff?text=Paris+Package'">
+                            <div class="package-badge">Popular</div>
+                        </div>
+                        <div class="package-content">
+                            <h5>Paris Romantic Getaway</h5>
+                            <div class="package-rating">
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <span class="rating-text">4.8 (120 reviews)</span>
+                            </div>
+                            <div class="package-details">
+                                <p><i class="fas fa-calendar"></i> 7 Days</p>
+                                <p><i class="fas fa-plane"></i> Flight Included</p>
+                                <p><i class="fas fa-hotel"></i> 4-Star Hotel</p>
+                                <p><i class="fas fa-utensils"></i> Breakfast Included</p>
+                            </div>
+                            <div class="package-price">
+                                <span class="price">$1,299</span>
+                                <span class="per-person">per person</span>
+                            </div>
+                            <button class="btn btn-warning w-100" onclick="bookPackage(1)">
+                                Book Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="package-card">
+                        <div class="package-image">
+                            <img src="https://images.unsplash.com/photo-1548013146-72492268e070?w=400&fit=crop&crop=center" alt="Machu Picchu Package" onerror="this.src='https://via.placeholder.com/400x300/28a745/ffffff?text=Machu+Picchu'">
+                            <div class="package-badge">Adventure</div>
+                        </div>
+                        <div class="package-content">
+                            <h5>Machu Picchu Adventure</h5>
+                            <div class="package-rating">
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="far fa-star text-warning"></i>
+                                <span class="rating-text">4.6 (85 reviews)</span>
+                            </div>
+                            <div class="package-details">
+                                <p><i class="fas fa-calendar"></i> 10 Days</p>
+                                <p><i class="fas fa-plane"></i> Flight Included</p>
+                                <p><i class="fas fa-hotel"></i> 3-Star Hotel</p>
+                                <p><i class="fas fa-hiking"></i> Guided Tours</p>
+                            </div>
+                            <div class="package-price">
+                                <span class="price">$1,899</span>
+                                <span class="per-person">per person</span>
+                            </div>
+                            <button class="btn btn-warning w-100" onclick="bookPackage(2)">
+                                Book Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="package-card">
+                        <div class="package-image">
+                            <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=400&fit=crop&crop=center" alt="Santorini Package" onerror="this.src='https://via.placeholder.com/400x300/ffc107/000000?text=Santorini'">
+                            <div class="package-badge">Luxury</div>
+                        </div>
+                        <div class="package-content">
+                            <h5>Santorini Luxury Escape</h5>
+                            <div class="package-rating">
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <span class="rating-text">4.9 (95 reviews)</span>
+                            </div>
+                            <div class="package-details">
+                                <p><i class="fas fa-calendar"></i> 8 Days</p>
+                                <p><i class="fas fa-plane"></i> Flight Included</p>
+                                <p><i class="fas fa-hotel"></i> 5-Star Resort</p>
+                                <p><i class="fas fa-utensils"></i> All-Inclusive</p>
+                            </div>
+                            <div class="package-price">
+                                <span class="price">$2,499</span>
+                                <span class="per-person">per person</span>
+                            </div>
+                            <button class="btn btn-warning w-100" onclick="bookPackage(3)">
+                                Book Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark text-light py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <h5><i class="fas fa-plane-departure"></i> TravelEase</h5>
+                    <p>Your ultimate travel companion for booking flights, hotels, and travel packages worldwide.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <h6>Quick Links</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="flights.html">Flights</a></li>
+                        <li><a href="hotels.html">Hotels</a></li>
+                        <li><a href="packages.html">Packages</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2">
+                    <h6>Support</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h6>Newsletter</h6>
+                    <p>Subscribe to get the latest travel deals and updates.</p>
+                    <form class="newsletter-form">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Your email">
+                            <button class="btn btn-warning" type="submit">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p>&copy; 2024 TravelEase. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Login to TravelEase</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="loginForm">
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Password</label>
+                            <input type="password" class="form-control" required>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="rememberMe">
+                            <label class="form-check-label" for="rememberMe">Remember me</label>
+                        </div>
+                        <button type="submit" class="btn btn-warning w-100">Login</button>
+                    </form>
+                    <div class="text-center mt-3">
+                        <p>Don't have an account? <a href="#" data-bs-toggle="modal" data-bs-target="#registerModal">Sign up</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js"></script>
+    <script src="packages.js"></script>
+</body>
+</html> 
